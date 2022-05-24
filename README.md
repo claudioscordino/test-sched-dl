@@ -82,25 +82,33 @@ If you rather prefer to download and build these tools from sources:
 
  - Install the needed build packages:
 
-             sudo apt-get install build-essential gnome-devel
+              sudo apt-get install -y build-essential gnome-devel git cmake libjson-c-dev \
+              freeglut3-dev libxmu-dev libxi-dev flex bison fonts-freefont-ttf qtbase5-dev
 
- - Get the source code of trace-cmd:
+ - Get and build the tools:
 
-             git clone git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git
+              git clone https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/
+              cd libtraceevent
+              make
+              sudo make install
 
- - Build the tools:
+              git clone https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/
+              cd libtracefs
+              make
+              sudo make install
 
-             cd trace-cmd
+              git clone https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/
+              cd trace-cmd
+              make
+              make libs
+              sudo make install
+              sudo make install_libs
 
-             git checkout trace-cmd-v2.9.1
-
-             make
-
-             make gui
-
-             sudo make install
-
-             sudo make install_gui
+              git clone https://git.kernel.org/pub/scm/utils/trace-cmd/kernel-shark.git
+              cd kernel-shark/build
+              cmake ..
+              make
+              sudo ./install_gui.sh
 
  - Change inside `run.sh` and in `check.sh` the variables `TRACECMD` and
    `KERNELSHARK`, respectively.
