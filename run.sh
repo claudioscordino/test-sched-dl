@@ -35,12 +35,12 @@ do_clean
 
 if [[ "$TESTDL_SCHED_FLAG" == "" ]]; then
 	echo "Disabling RT throttling..."
-	echo -1 > /proc/sys/kernel/sched_rt_period_us
 	echo -1 > /proc/sys/kernel/sched_rt_runtime_us
+	echo -1 > /proc/sys/kernel/sched_rt_period_us
 	else
 	echo "Setting RT throttling..."
-	echo 1000000 > /proc/sys/kernel/sched_rt_period_us
 	echo  950000 > /proc/sys/kernel/sched_rt_runtime_us
+	echo 1000000 > /proc/sys/kernel/sched_rt_period_us
 fi
 
 if [[ $1 == "" ]];then

@@ -88,15 +88,19 @@ If you rather prefer to download and build these tools from sources:
 
              git clone git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git
 
-             git checkout trace-cmd-v2.6
-
  - Build the tools:
 
-             cd test-dl
+             cd trace-cmd
+
+             git checkout trace-cmd-v2.9.1
 
              make
 
              make gui
+
+             sudo make install
+
+             sudo make install_gui
 
  - Change inside `run.sh` and in `check.sh` the variables `TRACECMD` and
    `KERNELSHARK`, respectively.
